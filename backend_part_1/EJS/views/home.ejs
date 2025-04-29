@@ -1,0 +1,22 @@
+<%- include('components/header.ejs')%> // place the header in the header position only
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Welcome to homepage</h1>
+<label for="">List of the Products</label>
+
+
+<h2>Title is : <%= title %></h2>
+<ul>
+    <% products.forEach(product=>{ %>
+        
+        <li><%= product.id+" "+product.title  %></li>
+    <% }) %>
+</ul>
+
+
+// place footer in the footer only
+<%- include('components/footer.ejs')%>

@@ -6,7 +6,7 @@ const myfirstmiddleware = (req ,res , next)=>{
     console.log('This is the first middleware running') ; 
     next() ;
      // This next executes the other routes , if it not present only middleware part will be exceuted and the rest app routes will not be exceuted
-} ; 
+} ;
 
 app.use(myfirstmiddleware) ; 
 
