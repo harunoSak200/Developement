@@ -188,15 +188,18 @@ async function runQueryExamples(){
 
 
     // 11. delete the user from the database : 
+
     // const deletedUser = await User.findByIdAndDelete({_id : "68179c34e4aea78e7e53676c"})
     // console.log('deleted user : ' ,deletedUser)
 
-    //12 . update the user in the database : 
-    const updateUser = await User.findByIdAndUpdate({_id : "681793a4b9fa8aeb8f42b870"} , {
-        $set:{age : 100 , email: "hermoine@gmail.com"} , $push:{tags : 'updated skills' , tags:"blockchain developer"} , 
-    } , {new : true}) ; 
 
-    console.log('updated user : ' , updateUser) ;
+    //12 . update the user in the database : 
+
+    // const updateUser = await User.findByIdAndUpdate({_id : "681793a4b9fa8aeb8f42b870"} , {
+    //     $set:{age : 100 , email: "hermoine@gmail.com"} , $push:{tags : 'updated skills' , tags:"blockchain developer"} , 
+    // } , {new : true}) ; 
+
+    // console.log('updated user : ' , updateUser) ;
 
 
 
