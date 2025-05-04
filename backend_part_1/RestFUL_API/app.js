@@ -98,7 +98,8 @@ app.put('/update/:id' , (req , res)=>{
 app.delete('/delete/:id' , (req , res)=>{
     const id_requested = parseInt(req.params.id) ; 
     console.log(id_requested)
-    const findBookid = books.findIndex(bookItem=>bookItem.id === id_requested) ;
+    const findBookid = books.findIndex(bookItem=>bookItem.id === id_requested) ;   
+    // findIndex returns the -1 if particular index is not present
     console.log(findBookid)
     if(findBookid > 0){
         const deletedBook = books.splice(findBookid , 1)

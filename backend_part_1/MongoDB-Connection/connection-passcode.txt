@@ -1,0 +1,4 @@
+username : iambeavernoob
+passcode : LOQS9LD6clobKev4
+
+mongodb+srv://iambeavernoob:LOQS9LD6clobKev4@cluster0.our5lop.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
