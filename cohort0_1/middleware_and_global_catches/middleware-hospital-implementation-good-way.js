@@ -27,7 +27,7 @@ function ratelimitter(req , res , next){
             msg:"Your request limit exceeded , Please try with our premium feature where you can send 10000 requests."
         })
     }
-    else next() ; 
+    else next() ; // next only controls that it will gives controls to next middleware or the routes
 }
 
 function userMiddleware(req , res , next){
@@ -67,13 +67,17 @@ execute
 NOTE :If you want to get this middleware executed before each and the every routes then write app.use(ratelimitte) in the beginning of the route-handler only.
 */
 
+app.use(ratelimitter) ;  
+
 app.get("/health-checkup",userMiddleware , kidneyMiddleware , (req, res) => { 
     cnt++ ; 
     res.send("Your kidney is healthy");
     
 });
 
-app.use(ratelimitter) ;  
+
+/* if I use this middleware here then it will not affect the '/health-checkup' */
+// app.use(ratelimitter) ;  
 
 app.get("/kidney-check" ,userMiddleware , kidneyMiddleware , (req , res)=>{
     cnt++ ; 

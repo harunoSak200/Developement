@@ -1,0 +1,14 @@
+{
+  "name": "input_validation",
+  "version": "1.0.0",
+  "main": "input_validator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
