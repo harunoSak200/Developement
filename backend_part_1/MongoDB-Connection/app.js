@@ -49,8 +49,8 @@ async function runQueryExamples(){
         // }) ; 
 
         /*
-            In this method User.create({}) internally calls the the .save() function so no need to call the save() function althoug calling .save() not affect the code but we should avoid using
-            it redundantly
+            In this method User.create({}) internally calls the the .save() function so no need to call the save() function although calling .save() not affect the code but we should avoid using
+            it redundantly to make the code readable or less messy
         
         */
 
@@ -117,7 +117,7 @@ async function runQueryExamples(){
     //8. selecting the specific field : 
 
 
-    // const selectedFields = await User.find().select('name email -_id')
+    // const selectedFields = await User.find().select('name email -_id')   // '-' symbol used to exclude the certain fields
     // console.log(selectedFields)
 
     /*
@@ -178,7 +178,7 @@ async function runQueryExamples(){
     // passing -1 in the age does the sorting in the descending order according to the given age.
 
     // const sortedUsersASC = await User.find().sort({age : 1}) ; 
-    // passing -1 in the age does the sorting in the ascending order according to the given age.
+    // passing 1 in the age does the sorting in the ascending order according to the given age.
     // console.log(sortedUsersDSC , sortedUsersASC) ; 
 
 
@@ -195,11 +195,12 @@ async function runQueryExamples(){
 
     //12 . update the user in the database : 
 
-    // const updateUser = await User.findByIdAndUpdate({_id : "681793a4b9fa8aeb8f42b870"} , {
-    //     $set:{age : 100 , email: "hermoine@gmail.com"} , $push:{tags : 'updated skills' , tags:"blockchain developer"} , 
-    // } , {new : true}) ; 
+    const updateUser = await User.findByIdAndUpdate({_id : "681793a4b9fa8aeb8f42b870"} , {
+        $set:{age : 100 , email: "hermoine@gmail.com"} , $push: { tags: { $each: ['engineer'] } }
+        , 
+    } , {new : false}) ; 
 
-    // console.log('updated user : ' , updateUser) ;
+    console.log('updated user : ' , updateUser) ;
 
 
 
