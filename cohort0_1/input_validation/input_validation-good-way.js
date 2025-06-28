@@ -14,7 +14,6 @@
      
          const kidneys = req.body.kidneys ;
          const kidneyLength = kidneys.k_l.length ; 
-                 
         res.send(`your kidney list length is ${kidneyLength} ` + `for kidney list ${kidneys.k_l}`) ; 
 });
 
@@ -43,10 +42,6 @@ If your global error-handling middleware comes before your routes or other middl
 Express will never reach the error handler unless a route above explicitly passes an error to next(err).
 
 Errors thrown after it won't be caught by it — because it has already been skipped.
-
-
-
-
 
 */
 
