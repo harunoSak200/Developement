@@ -1,0 +1,4 @@
+npm create vite@latest
+cd react_app_name
+npm install 
+npm run dev

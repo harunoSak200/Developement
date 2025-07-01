@@ -14,7 +14,7 @@ app.use(express.json()) ;
 
 app.post('/health-checkup' , (req ,res)=>{
     const kidneys = req.body.kidneys ; 
-    const response = schemma.safeParse(kidneys) ; 
+    const response = schemma.safeParse(kidneys) ;
     res.json({
         response , 
     })

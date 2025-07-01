@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>  
+        <input  id="title" type="text" placeholder="title">
+        <br>
+        <br>
+        <input  id="description" type="text" placeholder="description">
+        <br>
+        <br>
+        <button onclick="addTodo()">Add Todo</button>
+    
+        <div id="container"></div>
+    </body>
+    <script>
+        let globalId = 0 ; 
+
+        
+        function markasdone(todoId){
+            const parent = document.getElementById(todoId) ;
+            parent.children[2].innerHTML = "Done!" ; 
+            
+        }
+        
+        function createChild(title , description , id){
+            const child = document.createElement("div") ; 
+            const grandChild1 = document.createElement("div") ; 
+            grandChild1.innerHTML = title  ;
+            
+            const grandChild2 = document.createElement("div") ; 
+            grandChild2.innerHTML = description ; 
+            
+            const grandChild3 = document.createElement("button") ; 
+            grandChild3.innerHTML = "Mark As Done" ;
+            
+            grandChild3.setAttribute("onclick" , `markasdone(${id})`) ; 
+            
+            // child.appendChild(grandChild1) ;
+            // child.appendChild(grandChild2) ; 
+            // child.appendChild(grandChild3) ; 
+            
+            // or 
+            
+            // append allows us to append multiple nodes and strings at the time
+            //appendChild only allows the nodes and single node at a time
+            
+            child.append(grandChild1 , grandChild2 , grandChild3)
+            
+            
+            child.setAttribute("id" , id) ; 
+            
+            
+            return child ; 
+            
+        }
+        
+        
+        
+        function updateDomAccToState(state){
+            const parent = document.getElementById("container") ; 
+            parent.innerHTML = "" ; 
+            for(let i = 0 ;i < state.length ; i++){
+                const child = createChild(state[i].title , state[i].description , state[i].id) ; 
+                parent.appendChild(child) ; 
+            }
+        }
+        // updateDomAccToState([
+        // {
+            
+        //     title : "go to gym" , 
+        //     description : "go to gym from 5-7" , 
+        //     id : 1
+        // } , 
+        // {
+            
+        //     title : "go to school" , 
+        //     description : "go to school everyday" , 
+        //     id : 2
+        // } , 
+        // {
+            
+        //     title : "Eat Ice-Cream" , 
+        //     description : "ice-cream at the taco bell" , 
+        //     id : 3
+        // } , 
+    // ]) ; 
+
+        async function  UpdateDomFromServer(){
+            const raw_data = await fetch('http://localhost:8001/get-todo-data') ; 
+            const json_data = await raw_data.json() ; 
+            console.log(json_data) ; 
+            updateDomAccToState(json_data) ; 
+        }
+
+        setInterval(UpdateDomFromServer , 5000) ; 
+
+        
+        function addTodo()
+        {
+            const title = document.getElementById('title').value ; 
+            const desc = document.getElementById('description').value ;
+
+        const parent = document.getElementById('container') ; 
+        parent.appendChild(createChild(title , desc , globalId++)) ; 
+        
+    }
+</script>
+</html>
